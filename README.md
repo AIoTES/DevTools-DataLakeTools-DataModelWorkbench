@@ -1,5 +1,7 @@
 # DL-datamodel_workbench
 
+ACTIVAGE datamodel workbench is the tool for explore the data in Data Lake produced by IoT platforms
+
 
 ## Development
 
