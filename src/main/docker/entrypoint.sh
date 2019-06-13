@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ -n ${BASE_PATH} ]]; then
-  JAVA_OPTS="${JAVA_OPTS} -Dserver.contextPath=${BASE_PATH}"
+  JAVA_OPTS="${JAVA_OPTS} -Dserver.context-path=${BASE_PATH}"
   echo "Notice: BASE_PATH set to '${BASE_PATH}'"
 fi
 

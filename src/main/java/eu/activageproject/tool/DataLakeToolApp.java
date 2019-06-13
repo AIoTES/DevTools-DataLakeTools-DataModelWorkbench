@@ -67,7 +67,7 @@ public class DataLakeToolApp {
         if (env.getProperty("server.ssl.key-store") != null) {
             protocol = "https";
         }
-        String contextPath = env.getProperty("server.contextPath");
+        String contextPath = env.getProperty("server.context-path");
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application '{}' is running! Access URLs:\n\t" +
                 "Local: \t\t{}://localhost:{}{}\n\t" +
