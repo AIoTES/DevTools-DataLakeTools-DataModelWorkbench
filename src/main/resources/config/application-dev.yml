@@ -32,11 +32,11 @@ spring:
         serialization.indent_output: true
     data:
         mongodb:
-            uri: mongodb://srvgal104.deri.ie:27017
+            uri: mongodb://localhost:27017
             database: activage-data-lake
         elasticsearch:
             cluster-name: elasticsearch
-            cluster-nodes: srvgal104.deri.ie:9310
+            cluster-nodes: localhost:9310
     mail:
         host: localhost
         port: 25
