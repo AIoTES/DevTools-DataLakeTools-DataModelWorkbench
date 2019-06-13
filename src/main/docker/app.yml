@@ -8,6 +8,5 @@ services:
             - SPRING_DATA_MONGODB_URI=mongodb://srvgal104.deri.ie:27017
             - SPRING_DATA_MONGODB_DATABASE=activage-data-lake
             - SIMLIFE_SLEEP=10 # gives time for the database to boot before the application
-            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=srvgal104.deri.ie:9310
         ports:
-            - 8093:8093
+            - 8080:8080
