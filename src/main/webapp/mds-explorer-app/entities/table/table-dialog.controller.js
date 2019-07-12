@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('TableDialogController', TableDialogController);
 
-    TableDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Table'];
+    TableDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Table', '$rootScope'];
 
-    function TableDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Table) {
+    function TableDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Table, $rootScope) {
         var vm = this;
 
         vm.table = entity;
@@ -36,6 +36,7 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('dataLakeToolApp:tableUpdate', result);
+            $rootScope.$emit('dataLakeToolApp:tableUpdateEvent');
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema','Model'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema','Model', '$rootScope'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,Model) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,Model, $rootScope) {
         var vm = this;
 
         console.log('NavbarController');
@@ -132,7 +132,14 @@ loadAllTable();
              }
          }
 
- loadAllModels();
+         
+         
+         $rootScope.$on('dataLakeToolApp:modelUpdateEvent', function(event) {
+        	 loadAllModels();  
+         });
+         
+         
+         loadAllModels();
 
          function loadAllModels () {
 

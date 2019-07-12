@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('SchemaDeleteController',SchemaDeleteController);
 
-    SchemaDeleteController.$inject = ['$uibModalInstance', 'entity', 'Schema'];
+    SchemaDeleteController.$inject = ['$uibModalInstance', 'entity', 'Schema', '$rootScope'];
 
-    function SchemaDeleteController($uibModalInstance, entity, Schema) {
+    function SchemaDeleteController($uibModalInstance, entity, Schema, $rootScope) {
         var vm = this;
 
         vm.schema = entity;
@@ -22,6 +22,7 @@
             Schema.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
+                    $rootScope.$emit('dataLakeToolApp:schemaUpdateEvent');
                 });
         }
     }

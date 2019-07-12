@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema','Model'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema','Model', '$rootScope'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,Model) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,Model,$rootScope) {
         var vm = this;
 
         console.log('NavbarController');
@@ -44,6 +44,13 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
+        
+        
+        $rootScope.$on('dataLakeToolApp:databaseUpdateEvent', function(event) {
+    		loadAllDatabase();  
+        });
+        
+        
 
         loadAllDatabase();
 
@@ -75,9 +82,14 @@
                         AlertService.error(error.data.message);
                     }
                 }
+                
+        
+        
+        $rootScope.$on('dataLakeToolApp:tableUpdateEvent', function(event) {
+        	loadAllTable();  
+         });
 
-
-loadAllTable();
+        loadAllTable();
 
         function loadAllTable () {
 
@@ -105,7 +117,13 @@ loadAllTable();
         }
 
 
-  loadAllSchema();
+        
+        $rootScope.$on('dataLakeToolApp:schemaUpdateEvent', function(event) {
+        	loadAllSchema();  
+        });
+        
+        
+        loadAllSchema();
 
          function loadAllSchema () {
 
@@ -132,7 +150,9 @@ loadAllTable();
              }
          }
 
- loadAllModels();
+         
+         
+         loadAllModels();
 
          function loadAllModels () {
 

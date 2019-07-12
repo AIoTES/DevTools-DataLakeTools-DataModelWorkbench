@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('DatabaseDeleteController',DatabaseDeleteController);
 
-    DatabaseDeleteController.$inject = ['$uibModalInstance', 'entity', 'Database'];
+    DatabaseDeleteController.$inject = ['$uibModalInstance', 'entity', 'Database', '$rootScope'];
 
-    function DatabaseDeleteController($uibModalInstance, entity, Database) {
+    function DatabaseDeleteController($uibModalInstance, entity, Database, $rootScope) {
         var vm = this;
 
         vm.database = entity;
@@ -22,6 +22,7 @@
             Database.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);
+                    $rootScope.$emit('dataLakeToolApp:databaseUpdateEvent');
                 });
         }
     }
