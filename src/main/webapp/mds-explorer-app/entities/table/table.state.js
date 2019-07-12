@@ -11,7 +11,7 @@
         $stateProvider
         .state('table', {
             parent: 'entity',
-            url: '/table?page&sort&search',
+            url: '/table?page&sort&search/{db}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Tables'

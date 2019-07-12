@@ -8,7 +8,6 @@
     TableController.$inject = ['$state', 'Table', 'TableSearch', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
     function TableController($state, Table, TableSearch, ParseLinks, AlertService, paginationConstants, pagingParams) {
-
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -50,7 +49,17 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.tables = data;
+                
+                var tempArray = [];
+                data.forEach(filterTables);
+
+                function filterTables(value, index, array) {
+                  if(value.db == $state.params.db) {
+                	  tempArray.push(value);  
+                  }
+                }
+                
+                vm.tables = tempArray;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

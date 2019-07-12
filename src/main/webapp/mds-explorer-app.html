@@ -113,14 +113,14 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a ui-sref="table">
+                                    <a ui-sref="table({db:database.db})">
 
                                         <i class="fa fa-folder text-green"></i> <span>Show all tables</span>
                                         <span class="pull-right-container"><small class="label pull-right bg-yellow">all</small></span>
                                     </a>
                                 </li>
 
-                            <li ng-repeat="table in vm.tables track by table.id"><a ui-sref="table-detail({id:table.id})"><i class="fa fa-table"></i> {{table.table}}</a></li>
+                            <li ng-repeat="table in vm.tables track by table.id" ng-show="table.db==database.db"><a ui-sref="table-detail({id:table.id})"><i class="fa fa-table"></i> {{table.table}}</a></li>
                             </ul>
                         </li>
 
