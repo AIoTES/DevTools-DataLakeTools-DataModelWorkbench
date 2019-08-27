@@ -114,11 +114,11 @@
             	method:'DELETE',
             	url: 'http://localhost:4567/independentStorage/deleteDB',
             	interceptor: function(config) {
-            			console.log("DELETE Request: " + JSON.stringify(config));
+//            			console.log("DELETE Request: " + JSON.stringify(config));
             	},
             	transformRequest: {
                     body: function(data) {
-                    	console.log("DELETE Data: " + JSON.stringify(data));
+//                    	console.log("DELETE Data: " + JSON.stringify(data));
                     	//var newData = JSON.parse(data);
                     	//delete data["id"];
                     	//console.log("SAVE Modified Data: " + JSON.stringify(data));
@@ -140,7 +140,7 @@
                     	//console.log("Save Data: " + JSON.stringify(data));
                     	//var newData = JSON.parse(data);
                     	delete data["id"];
-                    	console.log("SAVE Modified Data: " + JSON.stringify(data));
+//                    	console.log("SAVE Modified Data: " + JSON.stringify(data));
                     	data = angular.fromJson(data);
                     	return JSON.stringify(data);
                     }
