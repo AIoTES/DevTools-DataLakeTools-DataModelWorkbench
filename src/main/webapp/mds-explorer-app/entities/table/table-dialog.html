@@ -16,16 +16,20 @@
         <div class="form-group">
             <label class="control-label" for="field_db">Db</label>
             <input type="text" class="form-control" name="db" id="field_db"
-                    ng-model="vm.table.db"
-                    required ng-minlength="5" ng-maxlength="20"/>
+                    ng-model="vm.table.db" ng-pattern="/^[\w]+$/"
+                    required ng-minlength="1" ng-maxlength="20"/>
             <div ng-show="editForm.db.$invalid">
                 <p class="help-block"
                     ng-show="editForm.db.$error.required">
                     This field is required.
                 </p>
                 <p class="help-block"
+                    ng-show="editForm.db.$error.pattern">
+                    Database name not correct.
+                </p>
+                <p class="help-block"
                     ng-show="editForm.db.$error.minlength" translate-value-min="5">
-                    This field is required to be at least 5 characters.
+                    This field is required to be at least 1 characters.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.db.$error.maxlength">
@@ -36,16 +40,20 @@
         <div class="form-group">
             <label class="control-label" for="field_table">Table</label>
             <input type="text" class="form-control" name="table" id="field_table"
-                    ng-model="vm.table.table"
-                    required ng-minlength="5" ng-maxlength="20"/>
+                    ng-model="vm.table.table" ng-pattern="/^[\w]+$/"
+                    required ng-minlength="1" ng-maxlength="20"/>
             <div ng-show="editForm.table.$invalid">
                 <p class="help-block"
                     ng-show="editForm.table.$error.required">
                     This field is required.
                 </p>
                 <p class="help-block"
+                    ng-show="editForm.table.$error.pattern">
+                    Table name not correct.
+                </p>
+                <p class="help-block"
                     ng-show="editForm.table.$error.minlength" translate-value-min="5">
-                    This field is required to be at least 5 characters.
+                    This field is required to be at least 1 characters.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.table.$error.maxlength">

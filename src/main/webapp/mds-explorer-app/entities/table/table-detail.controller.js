@@ -19,6 +19,7 @@
                                   mode:'sql'
                                 };
 
+         
          document.getElementById("data_textview").innerHTML = JSON.stringify(vm.table.data, undefined, 2);
 
 
@@ -28,7 +29,24 @@
         $scope.$on('$destroy', unsubscribe);
 
            // Initial code content...
-           $scope.cmModel = 'SELECT SQL_NO_CACHE DISTINCT';
+           $scope.cmModel = '';
+           
+           $scope.runQuery = function() {
+               
+         	  //console.log(JSON.stringify(vm.table.db) + " --- " + $scope.cmModel);
+         	  //console.log("Table Selected: " + JSON.stringify(vm.table.table));
+         	  
+         	  Table.get({id : vm.table.table, db : vm.table.db, query: $scope.cmModel}, onSuccess, onError);
+         	  
+         	  function onSuccess(data, headers) {
+                  //console.log("Data after Querying: " + JSON.stringify(data));
+                  document.getElementById("data_textview").innerHTML = JSON.stringify(data.data, undefined, 2);
+               }
+               function onError(error) {
+                   AlertService.error(error.data.message);
+               }
+         	  
+           };
 
     }
 })();

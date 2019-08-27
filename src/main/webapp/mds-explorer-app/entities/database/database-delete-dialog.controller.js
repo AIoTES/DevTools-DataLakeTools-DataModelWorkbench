@@ -19,6 +19,7 @@
         }
 
         function confirmDelete (id) {
+        	
             Database.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);

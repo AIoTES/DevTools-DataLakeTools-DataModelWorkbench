@@ -48,7 +48,7 @@
         })
         .state('table-detail', {
             parent: 'table',
-            url: '/table/{id}',
+            url: '/table/{id}/{db}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Table'
@@ -62,7 +62,7 @@
             },
             resolve: {
                 entity: ['$stateParams', 'Table', function($stateParams, Table) {
-                    return Table.get({id : $stateParams.id}).$promise;
+                    return Table.get({id : $stateParams.id, db : $stateParams.db}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -132,7 +132,7 @@
         })
         .state('table.edit', {
             parent: 'table',
-            url: '/{id}/edit',
+            url: '/{id}/edit/',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -145,7 +145,7 @@
                     size: 'lg',
                     resolve: {
                         entity: ['Table', function(Table) {
-                            return Table.get({id : $stateParams.id}).$promise;
+                            return Table.get({id : $stateParams.id, db : $state.params.db}).$promise;
                         }]
                     }
                 }).result.then(function() {

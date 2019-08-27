@@ -29,7 +29,7 @@
                     squash: true
                 },
                 sort: {
-                    value: 'id,asc',
+                    value: 'modelID,asc',
                     squash: true
                 },
                 search: null
@@ -62,6 +62,7 @@
             },
             resolve: {
                 entity: ['$stateParams', 'Model', function($stateParams, Model) {
+                	console.log("statparams.id: "+ $stateParams.id);
                     return Model.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {

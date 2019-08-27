@@ -35,7 +35,8 @@
                 Table.query({
                     page: pagingParams.page - 1,
                     size: vm.itemsPerPage,
-                    sort: sort()
+                    sort: sort(),
+                    db: $state.params.db
                 }, onSuccess, onError);
             }
             function sort() {
@@ -46,18 +47,19 @@
                 return result;
             }
             function onSuccess(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
+                //vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
                 
                 var tempArray = [];
-                data.forEach(filterTables);
-
-                function filterTables(value, index, array) {
-                  if(value.db == $state.params.db) {
-                	  tempArray.push(value);  
-                  }
-                }
+                var i=0;
+                data.forEach(function(value, index, array) {
+                    if(value.db == $state.params.db) {
+                  	  tempArray.push(value);
+                  	  tempArray[i].db=$state.params.db;
+                  	  i++;
+                    }
+                  });
                 
                 vm.tables = tempArray;
                 vm.page = pagingParams.page;

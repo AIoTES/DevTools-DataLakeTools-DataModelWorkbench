@@ -18,7 +18,7 @@
         });
         $scope.$on('$destroy', unsubscribe);
 
-         document.getElementById("model_textview").innerHTML = JSON.stringify(vm.model.params, undefined, 2);
+         document.getElementById("model_textview").innerHTML = JSON.stringify(vm.model.modelParams, undefined, 2);
 
     }
 })();

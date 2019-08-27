@@ -50,11 +50,12 @@
     		loadAllDatabase();  
         });
         
+        var k=0;
         
+        loadAllDatabase(k);
 
-        loadAllDatabase();
-
-                function loadAllDatabase () {
+                function loadAllDatabase (kValue) {
+                	k=kValue;
                         Database.query({
                             page: 0,
                             size: 20,
@@ -77,6 +78,11 @@
                         console.log(vm.databases);
                         console.log('tenete');
                         console.log(data);
+                        data.forEach(filterTables);
+
+                        function filterTables(value, index, array) {
+                          loadAllTable(value.id, k);
+                        }
                     }
                     function onError(error) {
                         AlertService.error(error.data.message);
@@ -85,18 +91,19 @@
                 
         
         
-        $rootScope.$on('dataLakeToolApp:tableUpdateEvent', function(event) {
-        	loadAllTable();  
+        $rootScope.$on('dataLakeToolApp:tableUpdateEvent', function(event, dbID) {
+        	loadAllDatabase(0);  
          });
 
-        loadAllTable();
+//        loadAllTable();
 
-        function loadAllTable () {
-
+        function loadAllTable (databaseID, kValue) {
+        	k=kValue;
                 Table.query({
                     page: 0,
                     size: 20,
-                    sort: sort()
+                    sort: sort(),
+                    db: databaseID
                 }, onSuccess, onError);
 
             function sort() {
@@ -109,11 +116,27 @@
             function onSuccess(data, headers) {
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.tables = data;
+                
+//                console.log("Full Data On Success: " + k + ": " + JSON.stringify(data));
+                
+                if(k==0) {
+                	vm.tables = data;
+                }
+                
+                var i=0;
+                data.forEach(function(value) {
+//                	console.log("Data On Success: " + JSON.stringify(value));
+                	data[i].db=databaseID;
+                	vm.tables[k] = value;
+                	i++;
+                	k++;
+                });
+                
             }
             function onError(error) {
                 AlertService.error(error.data.message);
             }
+            
         }
 
 

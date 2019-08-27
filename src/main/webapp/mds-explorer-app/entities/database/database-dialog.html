@@ -16,12 +16,18 @@
         <div class="form-group">
             <label class="control-label" for="field_db">Db</label>
             <input type="text" class="form-control" name="db" id="field_db"
-                    ng-model="vm.database.db"
+                    ng-model="vm.database.db" ng-pattern="/^[\w]+$/"
                     required/>
             <div ng-show="editForm.db.$invalid">
                 <p class="help-block"
                     ng-show="editForm.db.$error.required">
                     This field is required.
+                </p>
+            </div>
+            <div ng-show="editForm.db.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.db.$error.pattern">
+                    Database name not correct.
                 </p>
             </div>
         </div>

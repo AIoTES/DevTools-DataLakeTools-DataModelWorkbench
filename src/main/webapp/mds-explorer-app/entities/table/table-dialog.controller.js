@@ -36,7 +36,7 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('dataLakeToolApp:tableUpdate', result);
-            $rootScope.$emit('dataLakeToolApp:tableUpdateEvent');
+            $rootScope.$emit('dataLakeToolApp:tableUpdateEvent', vm.table.db);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

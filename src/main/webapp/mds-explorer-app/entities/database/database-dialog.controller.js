@@ -27,6 +27,7 @@
             if (vm.database.id !== null) {
                 Database.update(vm.database, onSaveSuccess, onSaveError);
             } else {
+            	//vm.database.id = vm.database.db;
                 Database.save(vm.database, onSaveSuccess, onSaveError);
             }
         }
@@ -34,6 +35,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('dataLakeToolApp:databaseUpdate', result);
             $rootScope.$emit('dataLakeToolApp:databaseUpdateEvent');
+            console.log("Result: " + result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

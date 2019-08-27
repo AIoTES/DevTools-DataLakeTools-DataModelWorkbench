@@ -31,7 +31,7 @@
                         <!--<span class="hidden-sm-down"></span>-->
                     <!--</button>-->
                     <button type="submit"
-                            ui-sref="model-detail.edit({id:vm.model.id})"
+                            ui-sref="model-detail.edit({id:vm.model.modelID})"
                             class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-pencil"></span>
                         <span class="hidden-sm-down"></span>
@@ -55,7 +55,7 @@
 
         <div class="modal-header">
             <label class="control-label" for="field_data">Model Parameters</label>
-            <pre id="model_textview"></pre>
+            <pre id="model_textview">{{vm.model.modelParams}}</pre>
         </div>
 
 

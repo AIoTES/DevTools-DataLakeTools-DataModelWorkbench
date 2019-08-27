@@ -60,7 +60,7 @@
         <section class="sidebar" ng-controller="NavbarController as vm">
             <!-- Sidebar user panel -->
 
-            <!-- search form -->
+            <!-- search form 
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -69,7 +69,7 @@
                 </button>
               </span>
                 </div>
-            </form>
+            </form> -->
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree" >
@@ -120,7 +120,7 @@
                                     </a>
                                 </li>
 
-                            <li ng-repeat="table in vm.tables track by table.id" ng-show="table.db==database.db"><a ui-sref="table-detail({id:table.id})"><i class="fa fa-table"></i> {{table.table}}</a></li>
+                            <li ng-repeat="table in vm.tables track by $index" ng-show="table.db==database.db"><a ui-sref="table-detail({id:table.id, db:database.db})"><i class="fa fa-table"></i> {{table.table}}</a></li>
                             </ul>
                         </li>
 

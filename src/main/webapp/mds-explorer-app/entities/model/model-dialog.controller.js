@@ -29,7 +29,7 @@
             var params = JSON.parse(vm.model.params);
             vm.model.params = params;
 
-            if (vm.model.id !== null) {
+            if (vm.model.modelID !== null) {
 
                 Model.update(vm.model, onSaveSuccess, onSaveError);
             } else {

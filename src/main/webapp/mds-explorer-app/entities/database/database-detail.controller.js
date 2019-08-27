@@ -53,10 +53,11 @@
 
          $scope.$on('$destroy', unsubscribe);
 
-         $scope.cmModel = '// enter your query';
+         $scope.cmModel = '';
 
 
           $scope.selectTable = function() {
+//        	  console.log("Table Selected: " + JSON.stringify(vm.selectedTable.table));
           }
 
           loadTableOfTheDatabase();
@@ -65,7 +66,8 @@
                          Table.query({
                              page: 0,
                              size: 20,
-                             sort: sort()
+                             sort: sort(),
+                             db: vm.database.db
                          }, onSuccess, onError);
                      function sort() {
                          var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
@@ -81,6 +83,24 @@
                          AlertService.error(error.data.message);
                      }
           }
+          
+          
+          $scope.runQuery = function() {
+              
+        	  //console.log(JSON.stringify(vm.database.db) + " --- " + $scope.cmModel);
+        	  //console.log("Table Selected: " + JSON.stringify(vm.selectedTable.table));
+        	  
+        	  Table.get({id : vm.selectedTable.table, db : vm.database.db, query: $scope.cmModel}, onSuccess, onError);
+        	  
+        	  function onSuccess(data, headers) {
+                 //console.log("Data after Querying: " + JSON.stringify(data));
+                 document.getElementById("data_textview").innerHTML = JSON.stringify(data.data, undefined, 2);
+              }
+              function onError(error) {
+                  AlertService.error(error.data.message);
+              }
+        	  
+          };
 
 
 

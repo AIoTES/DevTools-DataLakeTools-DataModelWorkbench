@@ -64,7 +64,7 @@
             <textarea ui-codemirror="cmOption" ng-model="cmModel"></textarea>
 
             <div class="modal-footer">
-                <button rows="3" cols="100" type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+                <button rows="3" cols="100" type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" ng-click="runQuery()">
                     <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Run</span>
                 </button>
             </div>

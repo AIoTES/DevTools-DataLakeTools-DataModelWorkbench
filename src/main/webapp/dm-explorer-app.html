@@ -99,7 +99,7 @@
                             </a>
                         </li>
 
-                        <li ng-repeat="model in vm.models track by model.id"><a ui-sref="model-detail({id:model.id})"><i class="fa fa-table"></i>{{model.name}}</a></li>
+                        <li ng-repeat="model in vm.models track by $index"><a ui-sref="model-detail({id:model.modelID})"><i class="fa fa-table"></i>{{model.name}}</a></li>
                     </ul>
                 </li>
 

@@ -8,10 +8,10 @@
     </div>
     <div class="modal-body">
         <sim-alert-error></sim-alert-error>
-        <div class="form-group" ng-show="vm.model.id">
-            <label for="id">ID</label>
+        <div class="form-group" ng-show="vm.model.modelID">
+            <label for="modelID">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.model.id" readonly />
+                    ng-model="vm.model.modelID" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_name">Name</label>
@@ -36,11 +36,11 @@
         <div class="form-group">
             <label class="control-label" for="field_params">Params</label>
             <textarea type="text" class="form-control" name="params" id="field_params"
-                    ng-model="vm.model.params"
+                    ng-model="vm.model.modelParams"
                       required></textarea>
-            <div ng-show="editForm.params.$invalid">
+            <div ng-show="editForm.modelParams.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.params.$error.required">
+                    ng-show="editForm.modelParams.$error.required">
                     This field is required.
                 </p>
             </div>
