@@ -73,7 +73,27 @@ For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
 
-You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
+First build the workbench component using the following command:
+
+    ./mvnw -DskipTests=true -Pdev clean package
+
+Second step is to build docker image. To build docker image, run the following command:
+
+    docker build --no-cache -t docker-activage.satrd.es/dl-datamodel-workbench target
+	
+Third step is to push docker image to the activage docker registry (docker-activage.satrd.es). Use the following command:
+
+    docker push docker-activage.satrd.es/dl-datamodel-workbench
+
+Last step is to run the docker image using the following command. For this step you will need `docker-env` file available in [src/main/docker](src/main/docker). Below command should be run from the directory where the `docker-env` file exists.
+
+    docker run -d -t --env-file docker-env -p 4590:8080 docker-activage.satrd.es/dl-datamodel-workbench:latest
+
+The Datamodel Workbench can be accessed using the following URL:
+
+[http://localhost:4590/datamodel-workbench/](http://localhost:4590/datamodel-workbench/)
+
+<!--- You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
 For example, to start a mysql database in a docker container, run:
 
@@ -94,4 +114,4 @@ Then run:
 
 For more information refer to [Using Docker and Docker-Compose][]
 
-## Continuous Integration (optional)
+## Continuous Integration (optional) -->
