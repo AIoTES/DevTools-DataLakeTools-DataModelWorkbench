@@ -169,7 +169,7 @@
                     size: 'md',
                     resolve: {
                         entity: ['Table', function(Table) {
-                            return Table.get({id : $stateParams.id}).$promise;
+                            return Table.get({id : $stateParams.id, db : $state.params.db}).$promise;
                         }]
                     }
                 }).result.then(function() {

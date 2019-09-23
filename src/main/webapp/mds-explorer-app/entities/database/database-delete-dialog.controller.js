@@ -20,7 +20,7 @@
 
         function confirmDelete (id) {
         	
-            Database.delete({id: id},
+            Database.delete({},
                 function () {
                     $uibModalInstance.close(true);
                     $rootScope.$emit('dataLakeToolApp:databaseUpdateEvent');

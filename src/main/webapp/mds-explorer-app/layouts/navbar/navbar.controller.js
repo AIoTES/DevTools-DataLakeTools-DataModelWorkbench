@@ -48,6 +48,7 @@
         
         $rootScope.$on('dataLakeToolApp:databaseUpdateEvent', function(event) {
     		loadAllDatabase();  
+    		loadAllSchema();  
         });
         
         var k=0;

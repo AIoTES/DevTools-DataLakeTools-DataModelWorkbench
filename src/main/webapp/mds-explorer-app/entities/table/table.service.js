@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Table', Table);
 
-    Table.$inject = ['$resource', '$state'];
+    Table.$inject = ['$resource', '$state', '$stateParams'];
 
-    function Table ($resource, $state) {
+    function Table ($resource, $state, $stateParams) {
         
     	// Local Calls
 //    	var resourceUrl =  'api/tables/:id';
@@ -92,7 +92,7 @@
                 transformRequest: {
                     body: function(data) {
                     	data = angular.fromJson(data);
-                    	//console.log("GET Table Request: " + JSON.stringify(data));
+//                    	console.log("GET Table Request: " + JSON.stringify(data));
                     	data.db = data.db;
                     	dbID = data.db;
                     	data.table = data.id;
@@ -101,7 +101,7 @@
                     		data.query = "SELECT * from " + data.table;
                     	} 
                     	//delete data["id"];
-                    	//console.log("GET Table Request Modified: " + JSON.stringify(data));
+//                    	console.log("GET Table Request Modified: " + JSON.stringify(data));
                     	return JSON.stringify(data);
                     }
             	},
@@ -138,6 +138,27 @@
                     	delete data["id"];
                     	//console.log("UPDATE Data REQUEST Modified: " + JSON.stringify(data));
                     	return JSON.stringify(data);
+                    }
+            	}
+            },
+            'delete': { 
+            	method:'DELETE',
+            	hasBody: 'true',
+            	url: 'http://localhost:4567/independentStorage/delete',
+            	transformRequest: {
+                    function(data) {
+//                    	console.log("DELETE Data: " + JSON.stringify(data));
+//                    	console.log("table: " + $stateParams.id);
+//                    	console.log("db: " + $state.params.db);
+                    	var table = $stateParams.id;
+                    	data = "{ db: '"+ $state.params.db + "', table: '"+ table +"', query: 'DELETE FROM " + table + "' }";
+//                    	data = angular.fromJson(data);
+                    	console.log("DELETE Data Modified: " + JSON.stringify(data));
+//                    	var newData = JSON.parse(data);
+                    	//delete data["id"];
+                    	//console.log("SAVE Modified Data: " + JSON.stringify(data));
+                    	//data = angular.fromJson(data);
+                    	return data;
                     }
             	}
             },

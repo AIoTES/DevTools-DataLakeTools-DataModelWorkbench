@@ -17,7 +17,7 @@
             <label class="control-label" for="field_entity">Name</label>
             <input type="text" class="form-control" name="entity" id="field_entity"
                     ng-model="vm.schema.entity"
-                    required ng-minlength="5" ng-maxlength="20"/>
+                    required ng-minlength="2" ng-maxlength="20"/>
             <div ng-show="editForm.entity.$invalid">
                 <p class="help-block"
                     ng-show="editForm.entity.$error.required">
@@ -33,7 +33,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
             <label class="control-label" for="field_properties">Properties</label>
             <textarea type="text" class="form-control" name="properties" id="field_properties"
                     ng-model="vm.schema.properties"

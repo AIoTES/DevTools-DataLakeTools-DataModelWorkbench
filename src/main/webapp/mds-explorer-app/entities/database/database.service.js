@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Database', Database);
 
-    Database.$inject = ['$resource', '$stateParams'];
+    Database.$inject = ['$resource', '$stateParams', '$location'];
 
-    function Database ($resource, $stateParams) {
+    function Database ($resource, $stateParams, $location) {
     	
     	//local
         
@@ -112,23 +112,20 @@
             },
             'delete': { 
             	method:'DELETE',
+            	hasBody: 'true',
             	url: 'http://localhost:4567/independentStorage/deleteDB',
-            	interceptor: function(config) {
-//            			console.log("DELETE Request: " + JSON.stringify(config));
-            	},
             	transformRequest: {
-                    body: function(data) {
+                    function(data) {
 //                    	console.log("DELETE Data: " + JSON.stringify(data));
-                    	//var newData = JSON.parse(data);
+                    	
+                    	data = "{ db: '"+ $stateParams.id + "' }";
+//                    	data = angular.fromJson(data);
+//                    	console.log("DELETE Data Modified: " + JSON.stringify(data));
+//                    	var newData = JSON.parse(data);
                     	//delete data["id"];
                     	//console.log("SAVE Modified Data: " + JSON.stringify(data));
                     	//data = angular.fromJson(data);
-                    	return JSON.stringify(data);
-                    },
-                    headers: function(data) {
-                    	
-                    	//console.log("DELETE Headers: " + JSON.stringify(data));
-
+                    	return data;
                     }
             	}
             },
