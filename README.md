@@ -115,3 +115,15 @@ Then run:
 For more information refer to [Using Docker and Docker-Compose][]
 
 ## Continuous Integration (optional) -->
+
+## Integration with other Components
+
+The Datamodel Workbench is dependent on two components i.e. Metadata Storage Server and Independent Data Storage. It will communicate with both components if both are deployed at the following URLs:
+
+Metadata Strorage Server:
+
+    http://localhost:8081/
+
+Independent Data Storage:
+
+    http://localhost:4567/
