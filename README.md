@@ -118,12 +118,16 @@ For more information refer to [Using Docker and Docker-Compose][]
 
 ## Integration with other Components
 
-The Datamodel Workbench is dependent on two components i.e. Metadata Storage Server and Independent Data Storage. It will communicate with both components if both are deployed at the following URLs:
+The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components if all are deployed at the following URLs:
 
-Metadata Strorage Server:
+[Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
 
     http://localhost:8081/
 
-Independent Data Storage:
+[Independent Data Storage:](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage)
 
     http://localhost:4567/
+
+[Query Execution Component:](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
+
+    http://localhost:4570/
