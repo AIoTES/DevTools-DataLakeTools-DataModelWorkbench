@@ -1,6 +1,12 @@
 # DL-datamodel_workbench
 
-ACTIVAGE datamodel workbench is the tool for explore the data in Data Lake produced by IoT platforms
+ACTIVAGE datamodel workbench is a tool for exploring the data in Data Lake produced by IoT platforms. The datamodel workbench consists of three components, i.e. Datamodel Explorer, Storage Explorer and Metadata Explorer.
+
+* The Datamodel Explorer is responsible for providing a graphical interface to the management of Models. It interacts with the [Metadata Strorage Server](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server) through the APIs exposed by Metadata Storage Server. 
+
+* The Storage Explorer provides a visual interface on top of the [Independent Data Storage](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage) and the schema part of the [Query Execution Component](https://git.activageproject.eu/Data_Analytics/DL-Query_execution) for management of Databases, Tables and Schemas. 
+
+* The Metadata Explorer component provides a graphical interface for management of Devices and Deployments. For this purpose, it interacts with the Metadata Storage Server through the APIs provided.
 
 
 ## Development
