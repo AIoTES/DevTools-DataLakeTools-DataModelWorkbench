@@ -1,6 +1,12 @@
 # DL-datamodel_workbench
 
-ACTIVAGE datamodel workbench is the tool for explore the data in Data Lake produced by IoT platforms
+ACTIVAGE datamodel workbench is a tool for exploring the data in Data Lake produced by IoT platforms. The datamodel workbench consists of three components, i.e. Datamodel Explorer, Storage Explorer and Metadata Explorer.
+
+* The Datamodel Explorer is responsible for providing a graphical interface to the management of Models. It interacts with the [Metadata Strorage Server](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server) through the APIs exposed by Metadata Storage Server. 
+
+* The Storage Explorer provides a visual interface on top of the [Independent Data Storage](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage) and the schema part of the [Query Execution Component](https://git.activageproject.eu/Data_Analytics/DL-Query_execution) for management of Databases, Tables and Schemas. 
+
+* The Metadata Explorer component provides a graphical interface for management of Devices and Deployments. For this purpose, it interacts with the Metadata Storage Server through the APIs provided.
 
 
 ## Development
@@ -115,3 +121,19 @@ Then run:
 For more information refer to [Using Docker and Docker-Compose][]
 
 ## Continuous Integration (optional) -->
+
+## Integration with other Components
+
+The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components if all are deployed at the following URLs:
+
+[Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
+
+    http://localhost:8081/
+
+[Independent Data Storage:](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage)
+
+    http://localhost:4567/
+
+[Query Execution Component:](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
+
+    http://localhost:4570/
