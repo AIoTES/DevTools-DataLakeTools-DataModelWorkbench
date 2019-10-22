@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Database', Database);
 
-    Database.$inject = ['$resource', '$stateParams', '$location'];
+    Database.$inject = ['$resource', '$stateParams', '$location', '$rootScope'];
 
-    function Database ($resource, $stateParams, $location) {
+    function Database ($resource, $stateParams, $location, $rootScope) {
     	
     	//local
         
@@ -37,8 +37,29 @@
         
         
         // external service
+    	
+    	var urlRequest = new XMLHttpRequest();
+    	var url = 'http://localhost:20086/api_base_urls/ids';
+    	urlRequest.open('GET', url, false);
+    	urlRequest.send(null);
+    	if(urlRequest.status === 200) {
+    		var resp = JSON.parse(urlRequest.response);
+    		$rootScope.idsURL = resp.baseurl;
+    	}
+    	
+    	var api = 'independentStorage/databases/:id';
+    	var deleteApi = 'independentStorage/deleteDB';
+    	var saveApi = 'independentStorage/createDB';
+    	
+    	var resourceUrl;    	
+    	resourceUrl =  $rootScope.idsURL + api;
+    	
+    	var deleteUrl = $rootScope.idsURL + deleteApi;
+    	var saveUrl = $rootScope.idsURL + saveApi;
         
-        var resourceUrl = 'http://localhost:4567/independentStorage/databases/:id';
+//      var resourceUrl = 'http://localhost:4567/independentStorage/databases/:id';
+//      var deleteUrl = 'http://localhost:4567/independentStorage/deleteDB';
+//      var saveUrl = 'http://localhost:4567/independentStorage/createDB';
 
         var currentDB;
         
@@ -113,7 +134,7 @@
             'delete': { 
             	method:'DELETE',
             	hasBody: 'true',
-            	url: 'http://localhost:4567/independentStorage/deleteDB',
+            	url: deleteUrl,
             	transformRequest: {
                     function(data) {
 //                    	console.log("DELETE Data: " + JSON.stringify(data));
@@ -131,7 +152,7 @@
             },
             'save': { 
             	method:'POST',
-            	url: 'http://localhost:4567/independentStorage/createDB',
+            	url: saveUrl,
             	transformRequest: {
                     body: function(data) {
                     	//console.log("Save Data: " + JSON.stringify(data));

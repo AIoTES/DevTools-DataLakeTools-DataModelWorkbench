@@ -4,11 +4,23 @@
         .module('dataLakeToolApp')
         .factory('Model', Model);
 
-    Model.$inject = ['$resource', 'DateUtils'];
+    Model.$inject = ['$resource', 'DateUtils', '$rootScope'];
 
-    function Model ($resource, DateUtils) {
+    function Model ($resource, DateUtils, $rootScope) {
         
-    	var resourceUrl =  'http://localhost:8081/api/devices/:id';
+    	var urlRequest = new XMLHttpRequest();
+    	var url = 'http://localhost:20086/api_base_urls/mds';
+    	urlRequest.open('GET', url, false);
+    	urlRequest.send(null);
+    	if(urlRequest.status === 200) {
+    		var resp = JSON.parse(urlRequest.response);
+    		$rootScope.mdsURL = resp.baseurl;
+    	}
+    	
+    	var api = 'api/devices/:id';
+    	var resourceUrl = $rootScope.mdsURL + api;
+    	
+//    	var resourceUrl =  'http://localhost:8081/api/devices/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},

@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Table', Table);
 
-    Table.$inject = ['$resource', '$state', '$stateParams'];
+    Table.$inject = ['$resource', '$state', '$stateParams', '$rootScope'];
 
-    function Table ($resource, $state, $stateParams) {
+    function Table ($resource, $state, $stateParams, $rootScope) {
         
     	// Local Calls
 //    	var resourceUrl =  'api/tables/:id';
@@ -39,7 +39,26 @@
 
     	
     	// External Calls
-    	var resourceUrl =  'http://localhost:4567/independentStorage/tables/:id';
+    	
+    	var api = 'independentStorage/tables/:id';
+    	var getApi = 'independentStorage/select';
+    	var updateApi = 'independentStorage/update';
+    	var deleteApi = 'independentStorage/delete';
+    	var insertApi = 'independentStorage/insert';
+    	
+    	var resourceUrl =  $rootScope.idsURL + api;
+    	var getUrl = $rootScope.idsURL + getApi;
+    	var updateUrl = $rootScope.idsURL + updateApi;
+    	var deleteUrl = $rootScope.idsURL + deleteApi;
+    	var insertUrl = $rootScope.idsURL + insertApi;
+    	
+//    	var resourceUrl =  'http://localhost:4567/independentStorage/tables/:id';
+//    	var getUrl = 'http://localhost:4567/independentStorage/select';
+//    	var updateUrl = 'http://localhost:4567/independentStorage/update';
+//    	var deleteUrl = 'http://localhost:4567/independentStorage/delete';
+//    	var insertUrl = 'http://localhost:4567/independentStorage/insert';
+    	
+    	
     	
     	var tableID;
     	var dbID;
@@ -88,7 +107,7 @@
             'get': {
                 method: 'POST',
                 //isArray: true,
-                url: 'http://localhost:4567/independentStorage/select',
+                url: getUrl,
                 transformRequest: {
                     body: function(data) {
                     	data = angular.fromJson(data);
@@ -129,7 +148,7 @@
             },
             'update': { 
             	method:'POST',
-            	url: 'http://localhost:4567/independentStorage/update',
+            	url: updateUrl,
             	transformRequest: {
                     body: function(data) {
                     	//console.log("UPDATE Data REQUEST: " + JSON.stringify(data));
@@ -144,7 +163,7 @@
             'delete': { 
             	method:'DELETE',
             	hasBody: 'true',
-            	url: 'http://localhost:4567/independentStorage/delete',
+            	url: deleteUrl,
             	transformRequest: {
                     function(data) {
 //                    	console.log("DELETE Data: " + JSON.stringify(data));
@@ -164,7 +183,7 @@
             },
             'save': { 
             	method:'POST',
-            	url: 'http://localhost:4567/independentStorage/insert',
+            	url: insertUrl,
             	transformRequest: {
                     body: function(data) {
                     	//console.log("Save Data: " + JSON.stringify(data));

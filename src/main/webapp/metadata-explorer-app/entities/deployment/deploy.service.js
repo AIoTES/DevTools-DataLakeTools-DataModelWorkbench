@@ -4,11 +4,24 @@
         .module('dataLakeToolApp')
         .factory('Deploy', Deploy);
 
-    Deploy.$inject = ['$resource', 'DateUtils'];
+    Deploy.$inject = ['$resource', 'DateUtils', '$rootScope'];
 
-    function Deploy ($resource, DateUtils) {
+    function Deploy ($resource, DateUtils, $rootScope) {
         
-    	var resourceUrl =  'http://localhost:8081/api/deployments/:id';
+    	
+    	var urlRequest = new XMLHttpRequest();
+    	var url = 'http://localhost:20086/api_base_urls/mds';
+    	urlRequest.open('GET', url, false);
+    	urlRequest.send(null);
+    	if(urlRequest.status === 200) {
+    		var resp = JSON.parse(urlRequest.response);
+    		$rootScope.mdsURL = resp.baseurl;
+    	}
+    	
+    	var api = 'api/deployments/:id';
+    	var resourceUrl = $rootScope.mdsURL + api;
+    	
+//    	var resourceUrl =  'http://localhost:8081/api/deployments/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},

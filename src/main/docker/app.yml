@@ -1,12 +1,33 @@
 version: '2'
 services:
     datalaketool-app:
-        build: .
         image: dl-datamodel-workbench
+        container_name: dl-datamodel-workbench-app
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATA_MONGODB_URI=mongodb://localhost:27017
+            - SPRING_DATA_MONGODB_URI=mongodb://workbench-mongodb:27017
             - SPRING_DATA_MONGODB_DATABASE=activage-data-lake
             - SIMLIFE_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=workbench-elasticsearch:9300
         ports:
-            - 8080:8080
+            - 4590:8080
+        links:
+        - json-server
+        command: http://json-server/
+    json-server:
+        image: docker-activage.satrd.es/json-server
+        command: -H 0.0.0.0 -w db.json
+        expose:
+        - "20086"
+        ports:
+        - "20086:80"
+        volumes:
+        - "./data:/data"
+    workbench-mongodb:
+        extends:
+            file: mongodb.yml
+            service: workbench-mongodb
+    workbench-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: workbench-elasticsearch

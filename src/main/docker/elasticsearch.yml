@@ -1,9 +1,19 @@
 version: '2'
 services:
-    datalaketool-elasticsearch:
+    workbench-elasticsearch:
         image: elasticsearch:2.4.6
+        container_name: wb_elasticsearch
+        environment:
+            - node.name=wb_elasticsearch
+            - cluster.name=docker-cluster
+            - cluster.initial_master_nodes=wb_elasticsearch
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
+            - http.cors.enabled=true
+            - http.cors.allow-origin=*
+            - network.host=_eth0_
         volumes:
             - ~/volumes/simlife/DataLakeTool/elasticsearch/:/usr/share/elasticsearch/data/
         ports:
-            - 9210:9210
-            - 9310:9310
+            - 9200:9200
+            - 9300:9300

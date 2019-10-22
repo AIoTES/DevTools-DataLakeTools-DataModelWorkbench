@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema','Model', '$rootScope'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'APIService', 'Database','Table','Schema','Model', '$rootScope'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,Model, $rootScope) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,APIService,Database,Table,Schema,Model, $rootScope) {
         var vm = this;
 
         console.log('NavbarController');
@@ -19,12 +19,15 @@
             vm.inProduction = response.inProduction;
             vm.swaggerEnabled = response.swaggerEnabled;
         });
+        
+       
 
         vm.login = login;
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
+
 
         function login() {
             collapseNavbar();
@@ -48,6 +51,7 @@
         loadAllDatabase();
 
                 function loadAllDatabase () {
+                	
                         Database.query({
                             page: 0,
                             size: 20,
@@ -138,18 +142,18 @@ loadAllTable();
         	 loadAllModels();  
          });
          
-         
          loadAllModels();
 
          function loadAllModels () {
-
-                 Model.query({
-                     page: 0,
-                     size: 20,
-                     sort: sort()
-                 }, onSuccess, onError);
-
-             function sort() {
+        	 
+        	 
+        	 Model.query({
+                 page: 0,
+                 size: 20,
+                 sort: sort()
+             }, onSuccess, onError);
+    		 
+    		 function sort() {
                  var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                  if (vm.predicate !== 'id') {
                      result.push('id');
@@ -165,6 +169,11 @@ loadAllTable();
              function onError(error) {
                  AlertService.error(error.data.message);
              }
+             
+
+                 
+
+            
          }
 
 /////

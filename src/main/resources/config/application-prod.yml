@@ -30,7 +30,7 @@ spring:
             uri: mongodb://localhost:27017
             database: DataLakeTool
         elasticsearch:
-            cluster-name:
+            cluster-name:  elasticsearch
             cluster-nodes: localhost:9300
     mail:
         host: localhost

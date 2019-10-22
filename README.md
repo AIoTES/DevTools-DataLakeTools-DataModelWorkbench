@@ -87,18 +87,42 @@ Second step is to build docker image. To build docker image, run the following c
 
     docker build --no-cache -t docker-activage.satrd.es/dl-datamodel-workbench target
 
-Third step is to run the docker image using the following command. For this step you will need `docker-env` file available in [src/main/docker](src/main/docker). Below command should be run from the directory where the `docker-env` file exists.
+Third step is to run the docker image using the following command. For this step you will need `app.yml`, `mongodb.yml` and `elasticsearch.yml` files available in [src/main/docker](src/main/docker). Also you will need to have a `db.json` file in the `data` directory located at [src/main/docker](src/main/docker). Below command should be run from the directory where the required files exists.
 
-    docker run -d -t --env-file docker-env -p 4590:8080 docker-activage.satrd.es/dl-datamodel-workbench:latest
+    docker-compose -f app.yml up -d 
 
 The Datamodel Workbench can be accessed using the following URL:
 
-[http://localhost:4590/datamodel-workbench/](http://localhost:4590/datamodel-workbench/)
+[http://localhost:4590/](http://localhost:4590/)
 
 Last step is to push docker image to the activage docker registry (docker-activage.satrd.es). Use the following command:
 
     docker push docker-activage.satrd.es/dl-datamodel-workbench
 
+## Integration with other Components
+
+The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components through the URLs specified in the [src/main/docker/data/db.json](src/main/docker/data/db.json) file. An example `db.json` file content is shown below. You can specify the base URLs of each of these components against their IDs (`mds=Metadata Storage Server`, `ids=Independent Data Storage` and `qe=Query Execution Component`). Don't forget to put a forward slash at the end of each base URL.
+
+	
+	{
+	  "api_base_urls": [
+	    { "id": "mds", "baseurl": "http://localhost:8081/" },
+	    { "id": "ids", "baseurl": "http://localhost:4567/" },
+		{ "id": "qe", "baseurl": "http://localhost:4570/" }
+	  ]
+	}
+	
+
+
+[Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
+
+
+[Independent Data Storage:](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage)
+
+
+[Query Execution Component:](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
+
+    
 <!--- You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
 For example, to start a mysql database in a docker container, run:
@@ -121,19 +145,3 @@ Then run:
 For more information refer to [Using Docker and Docker-Compose][]
 
 ## Continuous Integration (optional) -->
-
-## Integration with other Components
-
-The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components if all are deployed at the following URLs:
-
-[Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
-
-    http://localhost:8081/
-
-[Independent Data Storage:](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage)
-
-    http://localhost:4567/
-
-[Query Execution Component:](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
-
-    http://localhost:4570/

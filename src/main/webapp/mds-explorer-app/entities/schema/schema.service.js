@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Schema', Schema);
 
-    Schema.$inject = ['$resource'];
+    Schema.$inject = ['$resource', '$rootScope'];
 
-    function Schema ($resource) {
+    function Schema ($resource, $rootScope) {
        
 //    	var resourceUrl =  'api/schemata/:id';
 //
@@ -35,8 +35,19 @@
 //            'update': { method:'PUT' }
 //        });
         
+    	var urlRequest = new XMLHttpRequest();
+    	var url = 'http://localhost:20086/api_base_urls/qe';
+    	urlRequest.open('GET', url, false);
+    	urlRequest.send(null);
+    	if(urlRequest.status === 200) {
+    		var resp = JSON.parse(urlRequest.response);
+    		$rootScope.qeURL = resp.baseurl;
+    	}
+    	
+        var api = 'getSchema';
+        var resourceUrl =  $rootScope.qeURL + api; 
         
-        var resourceUrl =  'http://localhost:4570/getSchema';
+//        var resourceUrl =  'http://localhost:4570/getSchema';
 
         return $resource(resourceUrl, {}, {
             'query': { 
