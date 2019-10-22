@@ -1,0 +1,7 @@
+{
+  "api_base_urls": [
+    { "id": "mds", "baseurl": "http://localhost:8081/" },
+    { "id": "ids", "baseurl": "http://localhost:4567/" },
+	{ "id": "qe", "baseurl": "http://localhost:4570/" }
+  ]
+}
