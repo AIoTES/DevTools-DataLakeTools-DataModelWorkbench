@@ -101,7 +101,7 @@ Last step is to push docker image to the activage docker registry (docker-activa
 
 ## Integration with other Components
 
-The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components through the URLs specified in the [src/main/docker/data/app.yml](src/main/docker/data/app.yml) file. You can specify the base URLs of each of these components in Environment Variables (`API_MDS=Metadata Storage Server`, `API_IDS=Independent Data Storage` and `API_QE=Query Execution Component`). Don't forget to put a forward slash at the end of each base URL.
+The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components through the URLs specified in the [src/main/docker/app.yml](src/main/docker/app.yml) file. You can specify the base URLs of each of these components in Environment Variables (`API_MDS=Metadata Storage Server`, `API_IDS=Independent Data Storage` and `API_QE=Query Execution Component`). Don't forget to put a forward slash at the end of each base URL.
 
 [Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
 
