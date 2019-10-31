@@ -10,12 +10,13 @@
         
     	
     	var urlRequest = new XMLHttpRequest();
-    	var url = 'http://localhost:20086/api_base_urls/mds';
+//    	var url = 'http://localhost:20086/api_base_urls/mds';
+    	var url = 'api/mds';
     	urlRequest.open('GET', url, false);
     	urlRequest.send(null);
     	if(urlRequest.status === 200) {
-    		var resp = JSON.parse(urlRequest.response);
-    		$rootScope.mdsURL = resp.baseurl;
+    		console.log(JSON.stringify("MDS URL: " + urlRequest.response));
+    		$rootScope.mdsURL = urlRequest.response;
     	}
     	
     	var api = 'api/deployments/:id';

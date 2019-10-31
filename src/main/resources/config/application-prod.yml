@@ -118,3 +118,8 @@ simlife:
 # ===================================================================
 
 application:
+
+api:
+    mds: http://localhost:8081/
+    ids: http://localhost:4567/
+    qe: http://localhost:4570/

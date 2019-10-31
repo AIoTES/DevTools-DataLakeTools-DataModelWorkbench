@@ -87,7 +87,7 @@ Second step is to build docker image. To build docker image, run the following c
 
     docker build --no-cache -t docker-activage.satrd.es/dl-datamodel-workbench target
 
-Third step is to run the docker image using the following command. For this step you will need `app.yml`, `mongodb.yml` and `elasticsearch.yml` files available in [src/main/docker](src/main/docker). Also you will need to have a `db.json` file in the `data` directory located at [src/main/docker](src/main/docker). Below command should be run from the directory where the required files exists.
+Third step is to run the docker image using the following command. For this step you will need `app.yml`, `mongodb.yml` and `elasticsearch.yml` files available in [src/main/docker](src/main/docker). Below command should be run from the directory where the required files exists.
 
     docker-compose -f app.yml up -d 
 
@@ -101,18 +101,7 @@ Last step is to push docker image to the activage docker registry (docker-activa
 
 ## Integration with other Components
 
-The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components through the URLs specified in the [src/main/docker/data/db.json](src/main/docker/data/db.json) file. An example `db.json` file content is shown below. You can specify the base URLs of each of these components against their IDs (`mds=Metadata Storage Server`, `ids=Independent Data Storage` and `qe=Query Execution Component`). Don't forget to put a forward slash at the end of each base URL.
-
-	
-	{
-	  "api_base_urls": [
-	    { "id": "mds", "baseurl": "http://localhost:8081/" },
-	    { "id": "ids", "baseurl": "http://localhost:4567/" },
-		{ "id": "qe", "baseurl": "http://localhost:4570/" }
-	  ]
-	}
-	
-
+The Datamodel Workbench is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components through the URLs specified in the [src/main/docker/data/app.yml](src/main/docker/data/app.yml) file. You can specify the base URLs of each of these components in Environment Variables (`API_MDS=Metadata Storage Server`, `API_IDS=Independent Data Storage` and `API_QE=Query Execution Component`). Don't forget to put a forward slash at the end of each base URL.
 
 [Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
 

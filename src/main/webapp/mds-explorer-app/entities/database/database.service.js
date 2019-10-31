@@ -39,12 +39,13 @@
         // external service
     	
     	var urlRequest = new XMLHttpRequest();
-    	var url = 'http://localhost:20086/api_base_urls/ids';
+//    	var url = 'http://localhost:20086/api_base_urls/ids';
+    	var url = 'api/ids';
     	urlRequest.open('GET', url, false);
     	urlRequest.send(null);
     	if(urlRequest.status === 200) {
-    		var resp = JSON.parse(urlRequest.response);
-    		$rootScope.idsURL = resp.baseurl;
+    		console.log(JSON.stringify("IDS URL: " + urlRequest.response));
+    		$rootScope.idsURL = urlRequest.response;
     	}
     	
     	var api = 'independentStorage/databases/:id';

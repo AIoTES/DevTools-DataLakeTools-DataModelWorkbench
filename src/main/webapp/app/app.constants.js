@@ -5,6 +5,6 @@
         .module('dataLakeToolApp')
         .constant('VERSION', "0.0.1-SNAPSHOT")
         .constant('DEBUG_INFO_ENABLED', false)
-        .constant('BUILD_TIMESTAMP', 1563291739246)
+        .constant('BUILD_TIMESTAMP', 1571334991829)
 ;
 })();

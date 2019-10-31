@@ -14,6 +14,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -67,6 +69,7 @@ public class DataLakeToolApp {
         if (env.getProperty("server.ssl.key-store") != null) {
             protocol = "https";
         }
+        
         String contextPath = env.getProperty("server.context-path");
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application '{}' is running! Access URLs:\n\t" +

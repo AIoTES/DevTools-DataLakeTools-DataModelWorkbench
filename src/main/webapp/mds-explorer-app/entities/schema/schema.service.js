@@ -36,12 +36,13 @@
 //        });
         
     	var urlRequest = new XMLHttpRequest();
-    	var url = 'http://localhost:20086/api_base_urls/qe';
+//    	var url = 'http://localhost:20086/api_base_urls/qe';
+    	var url = 'api/qe';
     	urlRequest.open('GET', url, false);
     	urlRequest.send(null);
     	if(urlRequest.status === 200) {
-    		var resp = JSON.parse(urlRequest.response);
-    		$rootScope.qeURL = resp.baseurl;
+    		console.log(JSON.stringify("QE URL: " + urlRequest.response));
+    		$rootScope.qeURL = urlRequest.response;
     	}
     	
         var api = 'getSchema';

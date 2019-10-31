@@ -9,20 +9,11 @@ services:
             - SPRING_DATA_MONGODB_DATABASE=activage-data-lake
             - SIMLIFE_SLEEP=10 # gives time for the database to boot before the application
             - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=workbench-elasticsearch:9300
+            - API_MDS=http://localhost:8081/
+            - API_IDS=http://localhost:4567/
+            - API_QE=http://localhost:4570/
         ports:
             - 4590:8080
-        links:
-        - json-server
-        command: http://json-server/
-    json-server:
-        image: docker-activage.satrd.es/json-server
-        command: -H 0.0.0.0 -w db.json
-        expose:
-        - "20086"
-        ports:
-        - "20086:80"
-        volumes:
-        - "./data:/data"
     workbench-mongodb:
         extends:
             file: mongodb.yml
