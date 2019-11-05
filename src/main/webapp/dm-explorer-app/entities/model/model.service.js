@@ -20,7 +20,7 @@
     	
     	// external service
     	
-    	var api = 'api/models/:id';
+    	var api = 'models/:id';
     	
     	var urlRequest = new XMLHttpRequest();
 //    	var url = 'http://localhost:20086/api_base_urls/mds';

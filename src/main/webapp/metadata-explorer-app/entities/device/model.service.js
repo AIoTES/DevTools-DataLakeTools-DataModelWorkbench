@@ -18,7 +18,7 @@
     		$rootScope.mdsURL = urlRequest.response;
     	}
     	
-    	var api = 'api/devices/:id';
+    	var api = 'devices/:id';
     	var resourceUrl = $rootScope.mdsURL + api;
     	
 //    	var resourceUrl =  'http://localhost:8081/api/devices/:id';
