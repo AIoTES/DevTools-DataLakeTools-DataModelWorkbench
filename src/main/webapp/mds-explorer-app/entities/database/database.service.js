@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Database', Database);
 
-    Database.$inject = ['$resource', '$stateParams', '$location', '$rootScope'];
+    Database.$inject = ['$resource', '$stateParams', '$location', '$rootScope', 'Identity'];
 
-    function Database ($resource, $stateParams, $location, $rootScope) {
+    function Database ($resource, $stateParams, $location, $rootScope, Identity) {
     	
     	//local
         
@@ -37,7 +37,8 @@
         
         
         // external service
-    	
+    	var token = Identity.authc.token;
+    	console.log("Identity: " + JSON.stringify(Identity) );
     	var urlRequest = new XMLHttpRequest();
 //    	var url = 'http://localhost:20086/api_base_urls/ids';
     	var url = 'api/ids';
@@ -65,7 +66,12 @@
         var currentDB;
         
         return $resource(resourceUrl, {}, {
-            'query': { method: 'POST', isArray: true,
+            'query': { 
+            	method: 'POST', 
+            	isArray: true,
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                },
             	transformResponse: function (data) {
                     if (data) {
                     	//console.log("QUERY Data: " + JSON.stringify(data));
@@ -93,6 +99,9 @@
             },
             'get': {
                 method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
                 transformRequest: {
                     body: function(data) {
                     	data = angular.fromJson(data);
@@ -129,12 +138,18 @@
                 }
             },
             'update': { 
-            	method:'PUT' 
+            	method:'PUT',
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                }
             	
             },
             'delete': { 
             	method:'DELETE',
             	hasBody: 'true',
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                },
             	url: deleteUrl,
             	transformRequest: {
                     function(data) {
@@ -154,6 +169,9 @@
             'save': { 
             	method:'POST',
             	url: saveUrl,
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                },
             	transformRequest: {
                     body: function(data) {
                     	//console.log("Save Data: " + JSON.stringify(data));

@@ -33,12 +33,12 @@
             vm.model.modelParams = params;
 
             if (vm.model.modelID) {
-            	console.log("model id != null -- " + vm.model.modelID);
-            	console.log("model id != null -- " + vm.model.name);
+//            	console.log("model id != null -- " + vm.model.modelID);
+//            	console.log("model id != null -- " + vm.model.name);
                 Model.update(vm.model, onSaveSuccess, onSaveError);
             } else {
             	vm.model.modelID = vm.model.name;
-            	console.log("model id == null");
+//            	console.log("model id == null");
                 Model.save(vm.model, onSaveSuccess, onSaveError);
             }
         }

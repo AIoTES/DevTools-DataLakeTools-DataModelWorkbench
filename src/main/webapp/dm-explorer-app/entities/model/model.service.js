@@ -4,7 +4,7 @@
         .module('dataLakeToolApp')
         .factory('Model', Model);
 
-    Model.$inject = ['$resource', 'DateUtils', '$rootScope'];
+    Model.$inject = ['$resource', 'DateUtils', '$rootScope', 'Identity', '$http'];
     
 //    function getBaseURL(Apibaseurl) {
 //    	var mdsAPI = JSON.parse(JSON.stringify(Apibaseurl.get()));
@@ -12,11 +12,18 @@
 //    	console.log("Base URL: " + mdsAPI.id);
 //    }
 
-    function Model ($resource, DateUtils, $rootScope) {
+    function Model ($resource, DateUtils, $rootScope, Identity, $http) {
     	
     	//local
     	//var resourceUrl =  'api/models/:id';
         
+    	var token = Identity.authc.token;
+    	console.log("Identity: " + JSON.stringify(Identity) );
+    	console.log("Auth: " + $http.defaults.headers.common.Authorization);
+    	
+    	$http.defaults.headers.common.Authorization = Identity.authc.token;
+    	
+    	console.log("Auth After: " + $http.defaults.headers.common.Authorization);
     	
     	// external service
     	
@@ -41,6 +48,9 @@
         return $resource(resourceUrl, {}, {
             'query': { 
             	method: 'GET',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                },
             	transformResponse: function (data) {
                     if (data) {
 //                    	console.log("Query Data Response: " + JSON.stringify(data));
@@ -52,6 +62,9 @@
             },
             'get': {
                 method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                },
                 transformResponse: function (data) {
                     if (data) {
 //                    	console.log("Data: " + JSON.stringify(data));
@@ -62,8 +75,17 @@
                     return data;
                 }
             },
+            'delete': { 
+            	method:'DELETE',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                }
+            },
             'update': { 
             	method:'PUT',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                },
             	transformResponse: function (data) {
                     if (data) {
                     	data = angular.fromJson(JSON.parse(data));
@@ -71,13 +93,13 @@
                     }
                     return data;
                 }
-            	}
-           // 'save': { 
-          //  	method:'POST', 
-           // 	transformResponse: function (data) {
-           // 		return data;
-           // 	}
-           // 	}
+            },
+            'save': { 
+            	method:'POST',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                }
+            }
         });
     }
 })();

@@ -12,7 +12,7 @@
             abstract: true,
             views: {
                 'navbar@': {
-                    templateUrl: 'dm-explorer-app/layouts/navbar/navbar.html',
+                    templateUrl: 'metadata-explorer-app/layouts/navbar/navbar.html',
                     controller: 'NavbarController',
                     controllerAs: 'vm'
                 }

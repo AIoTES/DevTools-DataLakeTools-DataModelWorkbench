@@ -49,8 +49,13 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+    <script src="content/js/keycloak.js"></script>
+    <script src="content/js/keycloak-authz.js"></script>
+    <script src="content/js/jwt-decode.min.js"></script>
+    
 </head>
-<body class="hold-transition skin-blue sidebar-mini" ng-app="dataLakeToolApp" ng-strict-di>
+<body class="hold-transition skin-blue sidebar-mini" ng-strict-di>
 <div class="wrapper">
 
     <!-- Left side column. contains the logo and sidebar -->
@@ -102,7 +107,25 @@
                         <li ng-repeat="model in vm.models track by $index"><a ui-sref="model-detail({id:model.modelID})"><i class="fa fa-table"></i>{{model.name}}</a></li>
                     </ul>
                 </li>
+				
+				
+				<li class="treeview" >
+                    <a href="#">
+                        <i class="fa fa-book"></i> <span>User</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="#" ng-click="logout()">
 
+                                <i class="fa fa-plus text-green"></i> <span>Logout</span>
+                                
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </section>
@@ -422,7 +445,6 @@
 
 <script src="dm-explorer-app/services/user/user.service.js"></script>
 <script src="dm-explorer-app/services/profiles/profile.service.js"></script>
-<script src="dm-explorer-app/services/profiles/api.service.js"></script>
 <script src="dm-explorer-app/services/profiles/page-ribbon.directive.js"></script>
 <script src="dm-explorer-app/services/auth/register.service.js"></script>
 <script src="dm-explorer-app/services/auth/principal.service.js"></script>
@@ -439,28 +461,6 @@
 <script src="dm-explorer-app/layouts/error/error.state.js"></script>
 <script src="dm-explorer-app/home/home.state.js"></script>
 <script src="dm-explorer-app/home/home.controller.js"></script>
-<script src="dm-explorer-app/entities/table/table-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/table/table-detail.controller.js"></script>
-<script src="dm-explorer-app/entities/table/table-delete-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/table/table.state.js"></script>
-<script src="dm-explorer-app/entities/table/table.service.js"></script>
-<script src="dm-explorer-app/entities/table/table.search.service.js"></script>
-<script src="dm-explorer-app/entities/table/table.controller.js"></script>
-<script src="dm-explorer-app/entities/schema/schema-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/schema/schema-detail.controller.js"></script>
-<script src="dm-explorer-app/entities/schema/schema-delete-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/schema/schema.state.js"></script>
-<script src="dm-explorer-app/entities/schema/schema.service.js"></script>
-<script src="dm-explorer-app/entities/schema/schema.search.service.js"></script>
-<script src="dm-explorer-app/entities/schema/schema.controller.js"></script>
-<script src="dm-explorer-app/entities/query/query-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/query/query-detail.controller.js"></script>
-<script src="dm-explorer-app/entities/query/query-delete-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/query/query.state.js"></script>
-<script src="dm-explorer-app/entities/query/query.service.js"></script>
-<script src="dm-explorer-app/entities/query/query.search.service.js"></script>
-<script src="dm-explorer-app/entities/query/query.controller.js"></script>
-<script src="dm-explorer-app/entities/model/apibaseurl.service.js"></script>
 <script src="dm-explorer-app/entities/model/model-dialog.controller.js"></script>
 <script src="dm-explorer-app/entities/model/model-detail.controller.js"></script>
 <script src="dm-explorer-app/entities/model/model-delete-dialog.controller.js"></script>
@@ -469,13 +469,6 @@
 <script src="dm-explorer-app/entities/model/model.search.service.js"></script>
 <script src="dm-explorer-app/entities/model/model.controller.js"></script>
 <script src="dm-explorer-app/entities/entity.state.js"></script>
-<script src="dm-explorer-app/entities/database/database-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/database/database-detail.controller.js"></script>
-<script src="dm-explorer-app/entities/database/database-delete-dialog.controller.js"></script>
-<script src="dm-explorer-app/entities/database/database.state.js"></script>
-<script src="dm-explorer-app/entities/database/database.service.js"></script>
-<script src="dm-explorer-app/entities/database/database.search.service.js"></script>
-<script src="dm-explorer-app/entities/database/database.controller.js"></script>
 <script src="dm-explorer-app/components/util/truncate-words.filter.js"></script>
 <script src="dm-explorer-app/components/util/truncate-characters.filter.js"></script>
 <script src="dm-explorer-app/components/util/sort-by.directive.js"></script>
@@ -510,6 +503,7 @@
 <script src="dm-explorer-app/blocks/config/alert.config.js"></script>
 <script src="dm-explorer-app/app.state.js"></script>
 <script src="dm-explorer-app/app.constants.js"></script>
+<script src="dm-explorer-app/identity.js"></script>
 <script src="dm-explorer-app/admin/user-management/user-management-dialog.controller.js"></script>
 <script src="dm-explorer-app/admin/user-management/user-management-detail.controller.js"></script>
 <script src="dm-explorer-app/admin/user-management/user-management-delete-dialog.controller.js"></script>

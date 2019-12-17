@@ -103,6 +103,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/mds").permitAll()
             .antMatchers("/api/ids").permitAll()
             .antMatchers("/api/qe").permitAll()
+            .antMatchers("/api/keyCloakConfig").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)

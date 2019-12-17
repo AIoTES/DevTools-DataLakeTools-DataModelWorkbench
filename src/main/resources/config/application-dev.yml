@@ -127,6 +127,14 @@ simlife:
 application:
 
 api:
-    mds: http://localhost:8081/
+    mds: http://localhost:8081/api/
     ids: http://localhost:4567/
     qe: http://localhost:4570/
+
+keycloak:
+    realm: demo
+    auth-server-url: http://localhost:8180/auth/
+    ssl-required: external
+    resource: datamodel-workbench
+    public-client: true
+    confidential-port: 0

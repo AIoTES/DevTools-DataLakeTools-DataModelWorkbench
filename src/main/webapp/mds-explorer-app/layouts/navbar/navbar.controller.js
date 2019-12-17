@@ -5,11 +5,11 @@
         .module('dataLakeToolApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema','Model', '$rootScope'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Database','Table','Schema', '$rootScope', 'Identity', '$scope'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,Model,$rootScope) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Database,Table,Schema,$rootScope, Identity, $scope) {
         var vm = this;
-
+        
         console.log('NavbarController');
         vm.isNavbarCollapsed = true;
         vm.databases = [];
@@ -27,8 +27,8 @@
         vm.$state = $state;
 
         function login() {
-            collapseNavbar();
-            LoginService.open();
+//            collapseNavbar();
+//            LoginService.open();
         }
 
         function logout() {
@@ -45,6 +45,10 @@
             vm.isNavbarCollapsed = true;
         }
         
+        $scope.logout = function() {
+//        	alert("Logging out ..");
+            Identity.logout();
+        }
         
         $rootScope.$on('dataLakeToolApp:databaseUpdateEvent', function(event) {
     		loadAllDatabase();  
@@ -173,38 +177,6 @@
                  AlertService.error(error.data.message);
              }
          }
-
-         
-         
-         loadAllModels();
-
-         function loadAllModels () {
-
-                 Model.query({
-                     page: 0,
-                     size: 20,
-                     sort: sort()
-                 }, onSuccess, onError);
-
-             function sort() {
-                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                 if (vm.predicate !== 'id') {
-                     result.push('id');
-                 }
-                 return result;
-             }
-             function onSuccess(data, headers) {
-
-                 vm.totalItems = headers('X-Total-Count');
-                 vm.queryCount = vm.totalItems;
-                 vm.models = data;
-             }
-             function onError(error) {
-                 AlertService.error(error.data.message);
-             }
-         }
-
-/////
 
 
     }

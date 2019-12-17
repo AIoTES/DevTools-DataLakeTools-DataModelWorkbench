@@ -4,10 +4,14 @@
         .module('dataLakeToolApp')
         .factory('Model', Model);
 
-    Model.$inject = ['$resource', 'DateUtils', '$rootScope'];
+    Model.$inject = ['$resource', 'DateUtils', '$rootScope', 'Identity'];
 
-    function Model ($resource, DateUtils, $rootScope) {
-        
+    function Model ($resource, DateUtils, $rootScope, Identity) {
+    	
+//    	var token = Identity.authc.token;
+    	console.log("Identity: " + JSON.stringify(Identity) );
+    	console.log("New Image ... ");
+    	
     	var urlRequest = new XMLHttpRequest();
 //    	var url = 'http://localhost:20086/api_base_urls/mds';
     	var url = 'api/mds';
@@ -24,9 +28,19 @@
 //    	var resourceUrl =  'http://localhost:8081/api/devices/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': { 
+            	method: 'GET', 
+            	isArray: true,
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                }
+            	
+            },
             'get': {
                 method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                },
                 transformResponse: function (data) {
                     if (data) {
                     	console.log("Data: " + JSON.stringify(data));
@@ -37,8 +51,23 @@
                     return data;
                 }
             },
+            'delete': { 
+            	method:'DELETE',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                }
+            },
+            'delete': { 
+            	method:'DELETE',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                }
+            },
             'update': { 
             	method:'PUT',
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                },
             	transformResponse: function (data) {
                     if (data) {
                     	data = angular.fromJson(JSON.parse(data));
@@ -46,13 +75,13 @@
                     }
                     return data;
                 }
+            },
+            'save': { 
+            	method:'POST', 
+            	headers: {
+                    'Authorization': 'Bearer ' + Identity.authc.token
+                }
             	}
-           // 'save': { 
-          //  	method:'POST', 
-           // 	transformResponse: function (data) {
-           // 		return data;
-           // 	}
-           // 	}
         });
     }
 })();

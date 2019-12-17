@@ -4,9 +4,9 @@
         .module('dataLakeToolApp')
         .factory('Schema', Schema);
 
-    Schema.$inject = ['$resource', '$rootScope'];
+    Schema.$inject = ['$resource', '$rootScope','Identity'];
 
-    function Schema ($resource, $rootScope) {
+    function Schema ($resource, $rootScope, Identity) {
        
 //    	var resourceUrl =  'api/schemata/:id';
 //
@@ -35,6 +35,9 @@
 //            'update': { method:'PUT' }
 //        });
         
+    	var token = Identity.authc.token;
+    	console.log("Identity: " + JSON.stringify(Identity) );
+    	
     	var urlRequest = new XMLHttpRequest();
 //    	var url = 'http://localhost:20086/api_base_urls/qe';
     	var url = 'api/qe';
@@ -52,7 +55,10 @@
 
         return $resource(resourceUrl, {}, {
             'query': { 
-            	method: 'POST', 
+            	method: 'POST',
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                },
             	isArray: true,
             	transformRequest: {
                     body: function(data) {
@@ -105,6 +111,9 @@
             },
             'get': {
                 method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
                 transformRequest: {
                     body: function(data) {
                     	
@@ -153,6 +162,9 @@
             },
             'save': {
             	method:'POST',
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                },
             	url: 'http://localhost:20085/services',
             	transformRequest: {
                     body: function(data) {
@@ -174,7 +186,17 @@
                     }
             	}	
             },
-            'update': { method:'PUT' }
+            'delete': { 
+            	method:'DELETE',
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            },
+            'update': { method:'PUT',
+            	headers: {
+                    'Authorization': 'Bearer ' + token
+                }	
+            }
         });
         
         

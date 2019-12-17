@@ -20,7 +20,8 @@
         vm.requestResetPassword = requestResetPassword;
         vm.username = null;
 
-        $timeout(function (){angular.element('#username').focus();});
+        login();
+//        $timeout(function (){angular.element('#username').focus();});
 
         function cancel () {
             vm.credentials = {
@@ -32,11 +33,11 @@
             $uibModalInstance.dismiss('cancel');
         }
 
-        function login (event) {
-            event.preventDefault();
+        function login () {
+//            event.preventDefault();
             Auth.login({
-                username: vm.username,
-                password: vm.password,
+                username: 'admin',
+                password: 'admin',
                 rememberMe: vm.rememberMe
             }).then(function () {
                 vm.authenticationError = false;

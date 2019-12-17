@@ -5,9 +5,9 @@
         .module('dataLakeToolApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'APIService', 'Database','Table','Schema','Model', '$rootScope'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService','Model', '$rootScope', 'Identity', '$scope'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,APIService,Database,Table,Schema,Model, $rootScope) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService,Model, $rootScope, Identity, $scope) {
         var vm = this;
 
         console.log('NavbarController');
@@ -30,8 +30,8 @@
 
 
         function login() {
-            collapseNavbar();
-            LoginService.open();
+//            collapseNavbar();
+//            LoginService.open();
         }
 
         function logout() {
@@ -47,94 +47,99 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
-
-        loadAllDatabase();
-
-                function loadAllDatabase () {
-                	
-                        Database.query({
-                            page: 0,
-                            size: 20,
-                            sort: sort()
-                        }, onSuccess, onError);
-
-                    function sort() {
-                        var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                        if (vm.predicate !== 'id') {
-                            result.push('id');
-                        }
-                        return result;
-                    }
-                    function onSuccess(data, headers) {
-                       // vm.links = ParseLinks.parse(headers('link'));
-                        vm.totalItems = headers('X-Total-Count');
-                        vm.queryCount = vm.totalItems;
-                        vm.databases = data;
-                        vm.page = 0;//pagingParams.page;
-                        console.log(vm.databases);
-                        console.log('tenete');
-                        console.log(data);
-                    }
-                    function onError(error) {
-                        AlertService.error(error.data.message);
-                    }
-                }
-
-
-loadAllTable();
-
-        function loadAllTable () {
-
-                Table.query({
-                    page: 0,
-                    size: 20,
-                    sort: sort()
-                }, onSuccess, onError);
-
-            function sort() {
-                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                if (vm.predicate !== 'id') {
-                    result.push('id');
-                }
-                return result;
-            }
-            function onSuccess(data, headers) {
-                vm.totalItems = headers('X-Total-Count');
-                vm.queryCount = vm.totalItems;
-                vm.tables = data;
-            }
-            function onError(error) {
-                AlertService.error(error.data.message);
-            }
+        
+        $scope.logout = function() {
+//        	alert("Logging out ..");
+            Identity.logout();
         }
 
+//        loadAllDatabase();
 
-  loadAllSchema();
+//                function loadAllDatabase () {
+//                	
+//                        Database.query({
+//                            page: 0,
+//                            size: 20,
+//                            sort: sort()
+//                        }, onSuccess, onError);
+//
+//                    function sort() {
+//                        var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+//                        if (vm.predicate !== 'id') {
+//                            result.push('id');
+//                        }
+//                        return result;
+//                    }
+//                    function onSuccess(data, headers) {
+//                       // vm.links = ParseLinks.parse(headers('link'));
+//                        vm.totalItems = headers('X-Total-Count');
+//                        vm.queryCount = vm.totalItems;
+//                        vm.databases = data;
+//                        vm.page = 0;//pagingParams.page;
+//                        console.log(vm.databases);
+//                        console.log('tenete');
+//                        console.log(data);
+//                    }
+//                    function onError(error) {
+//                        AlertService.error(error.data.message);
+//                    }
+//                }
 
-         function loadAllSchema () {
 
-                 Schema.query({
-                     page: 0,
-                     size: 20,
-                     sort: sort()
-                 }, onSuccess, onError);
-             function sort() {
-                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                 if (vm.predicate !== 'id') {
-                     result.push('id');
-                 }
-                 return result;
-             }
-             function onSuccess(data, headers) {
-                // vm.links = ParseLinks.parse(headers('link'));
-                 vm.totalItems = headers('X-Total-Count');
-                 vm.queryCount = vm.totalItems;
-                 vm.schemata = data;
-             }
-             function onError(error) {
-                 AlertService.error(error.data.message);
-             }
-         }
+//loadAllTable();
+
+//        function loadAllTable () {
+//
+//                Table.query({
+//                    page: 0,
+//                    size: 20,
+//                    sort: sort()
+//                }, onSuccess, onError);
+//
+//            function sort() {
+//                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+//                if (vm.predicate !== 'id') {
+//                    result.push('id');
+//                }
+//                return result;
+//            }
+//            function onSuccess(data, headers) {
+//                vm.totalItems = headers('X-Total-Count');
+//                vm.queryCount = vm.totalItems;
+//                vm.tables = data;
+//            }
+//            function onError(error) {
+//                AlertService.error(error.data.message);
+//            }
+//        }
+
+
+//  loadAllSchema();
+
+//         function loadAllSchema () {
+//
+//                 Schema.query({
+//                     page: 0,
+//                     size: 20,
+//                     sort: sort()
+//                 }, onSuccess, onError);
+//             function sort() {
+//                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+//                 if (vm.predicate !== 'id') {
+//                     result.push('id');
+//                 }
+//                 return result;
+//             }
+//             function onSuccess(data, headers) {
+//                // vm.links = ParseLinks.parse(headers('link'));
+//                 vm.totalItems = headers('X-Total-Count');
+//                 vm.queryCount = vm.totalItems;
+//                 vm.schemata = data;
+//             }
+//             function onError(error) {
+//                 AlertService.error(error.data.message);
+//             }
+//         }
 
          
          
@@ -176,7 +181,6 @@ loadAllTable();
             
          }
 
-/////
 
 
     }

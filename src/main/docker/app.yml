@@ -9,11 +9,13 @@ services:
             - SPRING_DATA_MONGODB_DATABASE=activage-data-lake
             - SIMLIFE_SLEEP=10 # gives time for the database to boot before the application
             - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=workbench-elasticsearch:9300
-            - API_MDS=http://localhost:8081/
+            - API_MDS=http://localhost:8081/api/
             - API_IDS=http://localhost:4567/
             - API_QE=http://localhost:4570/
         ports:
             - 4590:8080
+        volumes:
+      		- /keycloak:/content/keycloak
     workbench-mongodb:
         extends:
             file: mongodb.yml
