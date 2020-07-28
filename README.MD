@@ -8,8 +8,9 @@ ACTIVAGE datamodel workbench is a tool for exploring the data in Data Lake produ
 
 * The Metadata Explorer component provides a graphical interface for management of Devices and Deployments. For this purpose, it interacts with the Metadata Storage Server through the APIs provided.
 
+## Getting started / Use
 
-## Development
+## How to build, install, or deploy it
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
@@ -111,6 +112,14 @@ The Datamodel Workbench is dependent on three components i.e. Metadata Storage S
 
 [Query Execution Component:](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
 
+
+## Further Information
+
+
+## Credits
+
+
+## License
     
 <!--- You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
