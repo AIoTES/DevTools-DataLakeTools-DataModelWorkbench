@@ -10,6 +10,10 @@ ACTIVAGE datamodel workbench is a tool for exploring the data in Data Lake produ
 
 ## Getting started / Use
 
+This required section should explain the steps needed to use it. Remember Module is fully (or mostly ) functional code, 
+thus this section should explain interfaces, UIs, procedures and any other action (i.e. configuration) needed to use 
+the module. This section should be targeted to the end user of the module.
+
 ## How to build, install, or deploy it
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
@@ -115,11 +119,23 @@ The Datamodel Workbench is dependent on three components i.e. Metadata Storage S
 
 ## Further Information
 
+This section is mandatory; it will explain or link to the tutorial/course where the module itself and how to use it is 
+explained. The sections above should be contextualized on the module, as if it is a standalone code. This section, 
+however, should address the context of the module as part of AIOTES, thus in this section explanations about the other 
+modules which this module interacts with.
+
 
 ## Credits
 
+This recommended section should list the authors of the (template) project, and if possible accessible contact 
+information for users to use when doubts arise. It should be easily expandable, for instance add a template to 
+include other authors; the recommendation is to define a list using “Name Surname <user@host.name>" format.
+
 
 ## License
+    
+This is a required section, as we must specify the licence(s) applied to the code. This section should only be a 
+summary of the licence, as explained in the licence policy.
     
 <!--- You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
