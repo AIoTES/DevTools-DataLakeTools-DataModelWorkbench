@@ -1,4 +1,4 @@
-# DL-datamodel_workbench
+# Datamodel Workbench
 
 ACTIVAGE datamodel workbench is a tool for exploring the data in Data Lake produced by IoT platforms. The datamodel workbench consists of three components, i.e. Datamodel Explorer, Storage Explorer and Metadata Explorer.
 
