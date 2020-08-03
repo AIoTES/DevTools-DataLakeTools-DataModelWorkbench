@@ -51,7 +51,7 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 
 
 
-## Building for production
+### Building for production
 
 To optimize the test application for production, run:
 
@@ -64,31 +64,7 @@ To ensure everything worked, run:
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
-
-
-## Testing
-
-To launch your application's tests, run:
-
-    ./mvnw clean test
-
-### Client tests
-
-Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
-
-    gulp test
-
-UI end-to-end tests are powered by [Protractor][], which is built on top of WebDriverJS. They're located in [src/test/javascript/e2e](src/test/javascript/e2e)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`gulp itest`) in a second one.
-### Other tests
-
-Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/gatling](src/test/gatling) and can be run with:
-
-    ./mvnw gatling:execute
-
-For more information, refer to the [Running tests page][].
-
-## Using Docker to simplify development (optional)
+### Using Docker to simplify development (optional)
 
 First build the workbench component using the following command:
 
@@ -110,19 +86,33 @@ Last step is to push docker image to the activage docker registry (docker-activa
 
     docker push docker-activage.satrd.es/dl-datamodel-workbench
 
+## Testing
+
+To launch your application's tests, run:
+
+    ./mvnw clean test
+
+### Client tests
+
+Unit tests are run by [Karma](https://karma-runner.github.io/latest/index.html) and written with [Jasmine](https://jasmine.github.io/). They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
+
+    gulp test
+
+UI end-to-end tests are powered by [Protractor](https://www.protractortest.org/#/), which is built on top of WebDriverJS. They're located in [src/test/javascript/e2e](src/test/javascript/e2e)
+and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`gulp itest`) in a second one.
+
+### Other tests
+
+Performance tests are run by [Gatling](https://gatling.io/) and written in Scala. They're located in [src/test/gatling](src/test/gatling) and can be run with:
+
+    ./mvnw gatling:execute
+
+
 ## Further Information
 
 Further information can be found in below links:
 
 * [Course](https://poliformat.upv.es/portal/site/ESP_0_2626/tool/4136ab45-e867-4287-ac8e-d5eed63f8307/ShowPage?returnView=&studentItemId=0&backPath=&errorMessage=&clearAttr=&source=&title=&sendingPage=6007354&newTopLevel=false&postedComment=false&addBefore=&itemId=6007355&path=push&addTool=-1&recheck=&id=)
-
-
-## Credits
-
-This recommended section should list the authors of the (template) project, and if possible accessible contact 
-information for users to use when doubts arise. It should be easily expandable, for instance add a template to 
-include other authors; the recommendation is to define a list using “Name Surname <user@host.name>" format.
-
 
 ## License
     
