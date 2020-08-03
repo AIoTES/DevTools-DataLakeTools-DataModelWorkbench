@@ -12,13 +12,13 @@ ACTIVAGE datamodel workbench is a tool for exploring the data in Data Lake produ
 
 The Datamodel Workbench component is deployed as a part of AIOTES Data Lake. This component is dependent on three components i.e. Metadata Storage Server, Independent Data Storage and Query Execution Component. It will communicate with these components through the URLs specified in the [src/main/docker/app.yml](src/main/docker/app.yml) file. You can specify the base URLs of each of these components in Environment Variables (`API_MDS=Metadata Storage Server`, `API_IDS=Independent Data Storage` and `API_QE=Query Execution Component`). Don't forget to put a forward slash at the end of each base URL.
 
-[Metadata Strorage Server:](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
+* [Metadata Strorage Server](https://git.activageproject.eu/Deployment/DT-AIOTES_docker/src/master/Metadata%20Storage%20server)
 
 
-[Independent Data Storage:](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage)
+* [Independent Data Storage](https://git.activageproject.eu/Data_Analytics/DL-Independent_data_storage)
 
 
-[Query Execution Component:](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
+* [Query Execution Component](https://git.activageproject.eu/Data_Analytics/DL-Query_execution)
 
 ## How to build, install, or deploy it
 
@@ -126,8 +126,7 @@ include other authors; the recommendation is to define a list using “Name Surn
 
 ## License
     
-This is a required section, as we must specify the licence(s) applied to the code. This section should only be a 
-summary of the licence, as explained in the licence policy.
+The Datamodel workbench is licensed under [EUPL 1.2](https://eupl.eu/).
     
 <!--- You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
