@@ -86,6 +86,16 @@ Last step is to push docker image to the activage docker registry (docker-activa
 
     docker push docker-activage.satrd.es/dl-datamodel-workbench
 
+### Deploying docker image
+
+To run the docker image use the following command. For this step you will need `app.yml`, `mongodb.yml` and `elasticsearch.yml` files. Below command should be run from the directory where the required files exists.
+
+    docker-compose -f app.yml up -d
+
+The Datamodel Workbench can be accessed using the following URL:
+
+[http://localhost:4590/](http://localhost:4590/)
+
 ## Testing
 
 To launch your application's tests, run:
