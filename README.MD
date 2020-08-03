@@ -123,6 +123,7 @@ Performance tests are run by [Gatling](https://gatling.io/) and written in Scala
 Further information can be found in below links:
 
 * [Course](https://poliformat.upv.es/portal/site/ESP_0_2626/tool/4136ab45-e867-4287-ac8e-d5eed63f8307/ShowPage?returnView=&studentItemId=0&backPath=&errorMessage=&clearAttr=&source=&title=&sendingPage=6007354&newTopLevel=false&postedComment=false&addBefore=&itemId=6007355&path=push&addTool=-1&recheck=&id=)
+* [Wiki](https://git.activageproject.eu/Data_Analytics/DL-datamodel_workbench/wiki/_pages)
 
 ## License
     
