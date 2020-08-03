@@ -119,10 +119,9 @@ The Datamodel Workbench is dependent on three components i.e. Metadata Storage S
 
 ## Further Information
 
-This section is mandatory; it will explain or link to the tutorial/course where the module itself and how to use it is 
-explained. The sections above should be contextualized on the module, as if it is a standalone code. This section, 
-however, should address the context of the module as part of AIOTES, thus in this section explanations about the other 
-modules which this module interacts with.
+Further information can be found in below links:
+
+[Course](https://poliformat.upv.es/portal/site/ESP_0_2626/tool/4136ab45-e867-4287-ac8e-d5eed63f8307/ShowPage?returnView=&studentItemId=0&backPath=&errorMessage=&clearAttr=&source=&title=&sendingPage=6007354&newTopLevel=false&postedComment=false&addBefore=&itemId=6007355&path=push&addTool=-1&recheck=&id=)
 
 
 ## Credits
