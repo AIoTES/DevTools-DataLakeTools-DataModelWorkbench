@@ -1,0 +1,7 @@
+ACTIVAGE Internet of Things (IoT) for ageing well www.activageproject.eu
+Datamodel Workbench
+
+This project has received funding from the European Union's Horizon 2020 
+research and innovation programme under grant agreement No 732679.
+
+Copyright 2020 National University of Ireland Galway
