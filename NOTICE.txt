@@ -17,7 +17,8 @@ II. Used Software
 
 This product uses the following software with corresponding licenses:
 
-Spring Boot (https://spring.io/projects/spring-boot) distributed under Apache License Version 2.0 
+Spring Boot (https://spring.io/projects/spring-boot) distributed under Apache License Version 2.0
+Spring Framework (https://spring.io/projects/spring-framework) distributed under Apache License Version 2.0
 Eliasticsearch (https://www.elastic.co/) distributed under Apache License Version 2.0
 MongoDB (https://www.mongodb.com/) distributed under Apache License Version 2.0
 AngularJS (https://angularjs.org/) distributed under Apache License Version 2.0
@@ -26,11 +27,30 @@ FasterXML Jackson (https://github.com/FasterXML/jackson) distributed under Apach
 H2database (https://www.h2database.com/html/main.html) distributed under MPL 2.0, EPL 1.0
 JsonPath (https://github.com/json-path/JsonPath) distributed under Apache License Version 2.0 
 JCraft (http://www.jcraft.com/) distributed under BSD-style License
-Zalando Problem Spring Web distributed (https://github.com/zalando/problem-spring-web) under MIT License
+Zalando Problem Spring Web (https://github.com/zalando/problem-spring-web) distributed under MIT License
+MapStruct (https://mapstruct.org/) distributed under Apache License Version 2.0
+Simlife BOM and server-side library (https://github.com/simlife/simlife) distributed under Apache License Version 2.0
+Apache Commons IO (https://commons.apache.org/proper/commons-io/) distributed under Apache License Version 2.0
+Apache Commons Lang (https://commons.apache.org/proper/commons-lang/) distributed under Apache License Version 2.0
+Project Lombok (https://github.com/rzwitserloot/lombok) distributed under MIT License
+SpringFox (https://github.com/springfox/springfox) distributed under Apache License Version 2.0
+Metrics for Spring (https://github.com/ryantenney/metrics-spring) distributed under Apache License Version 2.0
+Organization Flapdoodle OSS (https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo) distributed under Apache License Version 2.0
+AssertJ - Fluent assertions for java (https://github.com/joel-costigliola/assertj-core) distributed under Apache License Version 2.0
+Logstash Logback Encoder (https://github.com/logstash/logstash-logback-encoder) distributed under Apache License Version 2.0
+Guava: Google Core Libraries for Java (https://github.com/google/guava) distributed under Apache License Version 2.0
+mongobee (https://github.com/mongobee/mongobee) distributed under Apache License Version 2.0
+Java JWT: JSON Web Token for Java and Android (https://github.com/jwtk/jjwt) distributed under Apache License Version 2.0
+Cucumber JUnit (https://github.com/cucumber/cucumber-jvm/tree/main/junit) distributed under MIT License
+Cucumber Spring (https://github.com/cucumber/cucumber-jvm/tree/main/spring) distributed under MIT License
+Jacoco Maven Plugin (https://www.eclemma.org/jacoco/trunk/doc/maven.html) distributed under EPL 2.0
 
-III. License Summary
+
+II. License Summary
 
 - Apache License, Version 2.0
-- MPL 2.0, EPL 1.0
+- MPL 2.0
+- EPL 1.0
+- EPL 2.0
 - BSD-style License
 - MIT License
