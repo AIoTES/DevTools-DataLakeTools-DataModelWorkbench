@@ -1,4 +1,5 @@
-/** Copyright 2020 National University of Ireland Galway 
+/** 
+* Copyright 2020 National University of Ireland Galway 
 * 
 * See the NOTICE file distributed with this work for additional information
 * regarding copyright ownership.
