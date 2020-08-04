@@ -8,7 +8,12 @@ research and innovation programme under grant agreement No 732679.
 Copyright 2020 National University of Ireland Galway
 
 
-I. Used Software
+I. Included Software
+
+ - Swagger-UI (https://github.com/swagger-api/swagger-ui), Copyright 2018 SmartBear Software, distributed under Apache 2.0 license
+ 
+ 
+II. Used Software
 
 This product uses the following software with corresponding licenses:
 
@@ -23,7 +28,7 @@ JsonPath (https://github.com/json-path/JsonPath) distributed under Apache Licens
 JCraft (http://www.jcraft.com/) distributed under BSD-style License
 Zalando Problem Spring Web distributed (https://github.com/zalando/problem-spring-web) under MIT License
 
-II. License Summary
+III. License Summary
 
 - Apache License, Version 2.0
 - MPL 2.0, EPL 1.0
