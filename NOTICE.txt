@@ -1,7 +1,31 @@
 ACTIVAGE Internet of Things (IoT) for ageing well www.activageproject.eu
-Datamodel Workbench
+
+Datamodel Workbench Component
 
 This project has received funding from the European Union's Horizon 2020 
 research and innovation programme under grant agreement No 732679.
 
 Copyright 2020 National University of Ireland Galway
+
+
+I. Used Software
+
+This product uses the following software with corresponding licenses:
+
+Spring Boot (https://spring.io/projects/spring-boot) distributed under Apache License Version 2.0 
+Eliasticsearch (https://www.elastic.co/) distributed under Apache License Version 2.0
+MongoDB (https://www.mongodb.com/) distributed under Apache License Version 2.0
+AngularJS (https://angularjs.org/) distributed under Apache License Version 2.0
+Dropwizard Metrics (https://metrics.dropwizard.io/4.1.2/) distributed under Apache License Version 2.0
+FasterXML Jackson (https://github.com/FasterXML/jackson) distributed under Apache License Version 2.0 
+H2database (https://www.h2database.com/html/main.html) distributed under MPL 2.0, EPL 1.0
+JsonPath (https://github.com/json-path/JsonPath) distributed under Apache License Version 2.0 
+JCraft (http://www.jcraft.com/) distributed under BSD-style License
+Zalando Problem Spring Web distributed (https://github.com/zalando/problem-spring-web) under MIT License
+
+II. License Summary
+
+- Apache License, Version 2.0
+- MPL 2.0, EPL 1.0
+- BSD-style License
+- MIT License
